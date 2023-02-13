@@ -14,7 +14,7 @@ import { Button } from "../components/Button";
 
 export const Landing = () => {
   return (
-    <div className="flex flex-d align-items justify-content">
+    <div className="flex flex-d align-items justify-content ">
       {LandingPage.map((data, index) => (
         <div className="landingPage" key={index}>
           <div className="containerTitle flex flex-d align-items justify-content landingTitle">

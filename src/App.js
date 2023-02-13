@@ -3,6 +3,7 @@ import { Footer, NavBar, Product } from "./components";
 import { Landing, Products, Services, Article, AboutUs } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import UserLogin from "./components/userLogin";
 
 function App() {
   const [current, setCurrent] = useState();
@@ -14,6 +15,7 @@ function App() {
         <Route path="product/*" element={<Products />}>
           <Route path="card" element={<Product />} />
         </Route>
+        <Route path="userLogin" element={<UserLogin />} />
         <Route path="services" element={<Services />} />
         <Route path="article" element={<Article />} />
         <Route path="about-us" element={<AboutUs />} />

@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import "../style/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { menuItems } from "../data/menuData";
 
 const menuIcons = [
@@ -12,7 +12,7 @@ const menuIcons = [
   {
     _id: nanoid(),
     img: require("../assets/icon-img/user.png"),
-    link: "about-us",
+    link: "userLogin",
   },
 ];
 
