@@ -1,12 +1,8 @@
 import { useState } from "react";
 
-export default function userLogin() {
-  // const [lastname, setLastname] = useState("");
-  // const [firstname, setFirstname] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
-
+export default function SignUp({ show, CallModal }) {
+  const ds = show ? "flex" : "none";
+  console.log(show);
   const init = {
     lastname: "",
     firstname: "",
@@ -20,7 +16,9 @@ export default function userLogin() {
   const onSave = (e) => {
     e.preventDefault();
 
-    fetch("http: //localhost:8080/api/user", {
+    console.log(JSON.stringify(user));
+
+    fetch("http://localhost:8080/api/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
@@ -35,16 +33,22 @@ export default function userLogin() {
   };
 
   return (
-    <div className="container">
-      <div>
+    <div
+      className="position-absolute modal justify-content-center align-items-center  "
+      style={{ display: ds, backgroundColor: "rgba(255,255,255,0.8)" }}
+      onClick={CallModal}
+    >
+      <div
+        className=" bg-white border h-50 col-4 p-2 rounded-4 p-2"
+        onClick={(e) => e.stopPropagation()}
+      >
         <br />
         <div>
           <label className="form-label">Lastname</label>
           <input
             type="text"
-            className="form-control w-25 "
-            // value={lastname}
-            // onChange={(e) => setLastname(e.target.value)}
+            className="form-control  w-75 "
+            value={user.lastname}
             onChange={(e) => {
               setUser({ ...user, lastname: e.target.value });
             }}
@@ -55,9 +59,8 @@ export default function userLogin() {
           <label>Firstname</label>
           <input
             type="text"
-            className="form-control w-25"
-            // value={firstname}
-            // onChange={(e) => setFirstname(e.target.value)}
+            className="form-control  w-75"
+            value={user.firstname}
             onChange={(e) => {
               setUser({ ...user, firstname: e.target.value });
             }}
@@ -68,9 +71,8 @@ export default function userLogin() {
           <label>Username</label>
           <input
             type="text"
-            className="form-control w-25"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
+            className="form-control w-75"
+            value={user.username}
             onChange={(e) => {
               setUser({ ...user, username: e.target.value });
             }}
@@ -81,9 +83,8 @@ export default function userLogin() {
           <label>Password</label>
           <input
             type="text"
-            className="form-control w-25"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
+            className="form-control  w-75"
+            value={user.password}
             onChange={(e) => {
               setUser({ ...user, password: e.target.value });
             }}
@@ -94,17 +95,23 @@ export default function userLogin() {
           <label>Email</label>
           <input
             type="email"
-            className="form-control w-25"
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
+            className="form-control  w-75"
+            value={user.email}
             onChange={(e) => {
               setUser({ ...user, email: e.target.value });
             }}
           />
         </div>
+        <br />
+        <div className="d-flex gap-2">
+          <button className="btn btn-primary" onClick={onSave}>
+            Sign Up
+          </button>
+          <button className="btn btn-success" onClick={CallModal}>
+            Close
+          </button>
+        </div>
       </div>
-      <br />
-      <button className="btn btn-primary" onClick={onSave}></button>
     </div>
   );
 }
