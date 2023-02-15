@@ -58,6 +58,10 @@ export const NavBar = ({ current, setCurrent }) => {
             <img src={e.img} alt="img" />
           </Link>
         ))}
+
+        {localStorage.getItem("lastname")
+          ? localStorage.getItem("lastname")
+          : ""}
       </div>
     </nav>
   );
