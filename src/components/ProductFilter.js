@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
 
 export default function ProductFilter() {
   const [data, setData] = useState([]);
@@ -15,14 +14,16 @@ export default function ProductFilter() {
   }, []);
 
   const getData = () => {
-    axios.get("").then((res) => {
+    axios.get("http://localhost:8080/api/product").then((res) => {
       setData(res.data.result);
       setFilteredData(res.data.result);
     });
   };
 
   useEffect(() => {
-    axios.get("").then((res) => setCatData(res.data.result));
+    axios
+      .get("http://localhost:8080/api/product")
+      .then((res) => setCatData(res.data.result));
   }, []);
 
   const onChangeText = (e) => {
@@ -92,7 +93,7 @@ export default function ProductFilter() {
     filteredData.map((e) => {
       if (e.productId == id) {
         let newObj = { ...e, isliked: !e.isliked };
-        fetch("", {
+        fetch("http://localhost:8080/api/product", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newObj),
@@ -137,7 +138,6 @@ export default function ProductFilter() {
                 All
               </button>
             </li>
-
             {catData.map((e) => {
               return (
                 <li>

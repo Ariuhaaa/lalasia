@@ -2,6 +2,7 @@ import { productCard } from "../data/productCard";
 import "../App.css";
 import { ProductsPage } from "../data/pagesData";
 import ProductCard from "../components/ProductCard";
+import ProductFilter from "../components/ProductFilter";
 
 export const Products = () => {
   return (
@@ -40,9 +41,10 @@ export const Products = () => {
           </div>
         </div> */}
         <div className="productCard">
-          {productCard.map((item) => (
+          <ProductFilter />
+          {/* {productCard.map((item) => (
             <ProductCard item={item} key={item._id} />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

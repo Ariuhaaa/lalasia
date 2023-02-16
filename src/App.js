@@ -4,6 +4,7 @@ import { Landing, Products, Services, Article, AboutUs } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import LoginPage from "./components/LoginPage";
+import ProductFilter from "./components/ProductFilter";
 
 function App() {
   const [current, setCurrent] = useState();
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="product/*" element={<Products />}>
           <Route path="card" element={<Product />} />
+          <Route path="productFilter" element={<ProductFilter />} />
         </Route>
         <Route path="userLogin" element={<LoginPage />} />
         <Route path="services" element={<Services />} />
